@@ -183,7 +183,7 @@
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[variables('adNicIPAddress')]",
                             "subnet": {
-                                "id": "[resourceId(resourceId(variables('vnetRg'),'Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]"
+                                "id": "[resourceId(variables('vnetRg'),'Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]"
                             },
                             "loadBalancerBackendAddressPools": [
                                 {

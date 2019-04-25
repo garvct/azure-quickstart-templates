@@ -56,19 +56,20 @@
         }
     },
     "variables": {
-        "virtualNetworkName": "adVNET",
-        "virtualNetworkAddressRange": "10.0.0.0/16",
+        "virtualNetworkName": "hpcbb",
+        "virtualNetworkAddressRange": "10.30.0.0/20",
         "adLBFE": "LBFE",
         "adLBBE": "LBBE",
         "adRDPNAT": "adRDP",
         "adNicName": "adNic",
-        "adNicIPAddress": "10.0.0.4",
+        "adNicIPAddress": "10.30.1.6",
         "adVMName": "adVM",
         "adSubnetName": "adSubnet",
-        "adSubnetAddressPrefix": "10.0.0.0/24",
+        "adSubnetAddressPrefix": "10.30.1.0/24",
         "publicIPAddressName": "adPublicIP",
         "adAvailabilitySetName": "adAvailabiltySet",
-        "adLBName": "adLoadBalancer"
+        "adLBName": "adLoadBalancer",
+        "vnetRg": "cg-hpcbb-infra-westeurope"
     },
     "resources": [
         {
@@ -182,7 +183,7 @@
                             "privateIPAllocationMethod": "Static",
                             "privateIPAddress": "[variables('adNicIPAddress')]",
                             "subnet": {
-                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]"
+                                "id": "[resourceId(resourceId(variables('vnetRg'),'Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('adSubnetName'))]"
                             },
                             "loadBalancerBackendAddressPools": [
                                 {
